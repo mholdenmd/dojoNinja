@@ -1,0 +1,58 @@
+from dojoNinjaApp.models import *
+
+Creating a new record
+Dojo.objects.create(name="ImJustABillSitingOnCaptilHill", city="Atlanta", state="GA")
+Dojo.objects.create(name="BigBuildingThatIOwn", city="Dallas", state="TX")
+Dojo.objects.create(name="IdoWhatIDoBro", city="los Something", state="CA")
+Dojo.objects.create(name="Chicken Tenders", city="BBQ", state="VA")
+
+Deleting an existing record
+c = Dojo.objects.get(id=3)
+c.delete()
+
+ret
+Dojo.objects.first().ninjas.all()
+Dojo.objects.get(id=5).ninjas.all()
+Dojo.objects.last().ninjas.all()
+Ninja.objects.last().dojo
+
+
+How to create for Ninja
+Ninja.objects.create(dojo=Dojo.objects.get(id=4), fname="Marcus", lname="Holden")
+Ninja.objects.create(dojo=Dojo.objects.get(id=4), fname="Ashley", lname="James")
+Ninja.objects.create(dojo=Dojo.objects.get(id=4), fname="JaQuan", lname="Davis")
+
+Ninja.objects.create(dojo=Dojo.objects.get(id=5), fname="Lavar", lname="Peabody")
+Ninja.objects.create(dojo=Dojo.objects.get(id=5), fname="Alpha", lname="Omega")
+Ninja.objects.create(dojo=Dojo.objects.get(id=5), fname="Pinky", lname="Brain")
+
+Ninja.objects.create(dojo=Dojo.objects.get(id=6), fname="Joe", lname="Torres")
+Ninja.objects.create(dojo=Dojo.objects.get(id=6), fname="Tiffany", lname="Haddish")
+Ninja.objects.create(dojo=Dojo.objects.get(id=6), fname="Darren", lname="Raines")
+
+Methods that return a list of instances of a class
+Ninja.objects.all() - gets all the records in the table
+
+Updating an existing record
+c = ClassName.objects.get(id=1)
+c.field_name = "some new value for field_name"
+c.save()
+
+Deleting an existing record
+c = ClassName.objects.get(id=1)
+c.delete()
+
+Dojo.objects.all()
+
+<ul>
+  {% for author in authors %}
+    <li>{{author.name}}
+      <ul>
+    	<!-- looping through each author's books! -->
+        {% for book in author.books.all %}	
+          <li><em>{{book.title}}</em></li>
+        {% endfor %}
+      </ul>
+    </li>
+  {% endfor %}
+</ul>

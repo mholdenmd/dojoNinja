@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hi Marcus</h1>
+    <!-- {{alldojos}} -->
+    {% for dojoobj in alldojos %}
+    <h3>{{dojoobj.name}}</h3>
+    <ol>
+        {% for allninjas in dojoobj.ninjas.all %}
+            <li>{{allninjas.fname}} {{allninjas.lname}}</li>
+            {% endfor %}
+    </ol>
+
+    {% endfor %}
+
+    <h2>Add a Dojo</h2>
+    <form action="/createDojo" method="post">
+        {% csrf_token %}
+        <p>Name:<input type="text" name="dojoname"></p>
+        <p>City:<input type="text" name="City"></p>
+        <p>State:<input type="text" name="State"></p>
+        <p><input type="submit" value="Add"></p>
+
+    </form>
+    <h2>Add a Ninja</h2>
+    <form action="/createNinja" method="post">
+        {% csrf_token %}
+        <p>First Name:<input type="text" name="first_name"></p>
+        <p>Last Name:<input type="text" name="last_name"></p>
+        <p>Dojo:<select name="dojoTeam" id="">
+            {% for dojoobj in alldojos %}
+            <option value="{{dojoobj.id}}">{{dojoobj.name}}</option>
+            {% endfor %}
+
+        </select></p>
+
+        <p><input type="submit" value="Add"></p>
+
+    </form>
+
+</body>
+</html>
